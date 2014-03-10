@@ -1,0 +1,33 @@
+<div class="header">
+    <ul class="nav nav-pills pull-right">
+        <li><a ng-href="#">Home</a></li>
+        <li class="active"><a ng-href="#/players">Players</a></li>
+    </ul>
+    <h3 class="text-muted">matchostat</h3>
+</div>
+
+<div class="container">
+    <h2>Players</h2>
+
+    <form role="form" ng-submit="addPlayer()">
+        <div class="row">
+            <div class="input-group">
+                <input type="text" ng-model="playerName" placeholder="Name of player" class="form-control">
+                <span class="input-group-btn">
+                    <input type="submit" class="btn btn-primary" value="Add">
+                </span>
+            </div>
+        </div>
+    </form>
+    <p></p>
+
+    <p><input type="text" ng-model="searchPlayers" placeholder="Quick search"></p>
+
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="player in players | filter:searchPlayers">
+            <span class="badge alert-danger" ng-click="removePlayer(player.id)"><span class="glyphicon glyphicon-remove"/></span>
+            {{player.id}}: {{player.name}}
+        </li>
+    </ul>
+
+</div>
