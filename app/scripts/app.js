@@ -1,12 +1,14 @@
 'use strict';
 
-angular.module('matchoApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'ngRoute',
-  'matchoServices'
-])
+var app = angular.module('matchoApp', [
+    'ngCookies',
+    'ngResource',
+    'ngSanitize',
+    'ngRoute'
+  ])
+  .constant('config', {
+    API_PATH: 'http://localhost:8080/matchostat/rest'
+  })
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
