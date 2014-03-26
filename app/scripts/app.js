@@ -1,3 +1,4 @@
+/* exported app */
 'use strict';
 
 var app = angular.module('matchoApp', [

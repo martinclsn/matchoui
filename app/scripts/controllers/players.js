@@ -3,15 +3,15 @@
 angular.module('matchoApp')
   .controller('PlayersCtrl', function ($scope, $http, config) {
 
-    $scope.players = [];
-    init();
-
     function init() {
       $http.get(getPlayersPath()).success(function (data) {
         $scope.players = data;
         $scope.playerName = '';
       });
     }
+
+    $scope.players = [];
+    init();
 
     function getPlayersPath() {
       return config.API_PATH + '/players';
@@ -20,19 +20,18 @@ angular.module('matchoApp')
 
     $scope.addPlayer = function () {
       $http.post(getPlayersPath(), {name: $scope.playerName}).success(
-        function (data) {
-          init()
+        function () {
+          init();
         });
-
-    }
+    };
 
     $scope.removePlayer = function (id) {
-      console.log("remove player "+ id);
+      console.log('remove player '+ id);
       $http.delete(getPlayersPath() + '/' + id).success(
-        function (data) {
+        function () {
           init();
         }
       );
 
-    }
+    };
   });
