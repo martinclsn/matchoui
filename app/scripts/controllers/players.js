@@ -3,11 +3,23 @@
 angular.module('matchoApp')
   .controller('PlayersCtrl', function ($scope, $http, config) {
 
+    var errorFunction = function (data, status, headers, config) {
+      var message = 'Error ' + data;
+      if(status === 0) {
+        message = 'Unable to access server';
+      }
+      alert(message);
+    };
+
     function init() {
-      $http.get(getPlayersPath()).success(function (data) {
+      $http.get(getPlayersPath()).success(function (data, status, headers, config) {
         $scope.players = data;
         $scope.playerName = '';
-      });
+      }).error(errorFunction);
+    }
+
+    $scope.clear = function()  {
+      $scope.playerName = '';
     }
 
     $scope.players = [];
@@ -22,7 +34,7 @@ angular.module('matchoApp')
       $http.post(getPlayersPath(), {name: $scope.playerName}).success(
         function () {
           init();
-        });
+        }).error(errorFunction);
     };
 
     $scope.removePlayer = function (id) {
@@ -31,7 +43,7 @@ angular.module('matchoApp')
         function () {
           init();
         }
-      );
+      ).error(errorFunction);
 
     };
   });

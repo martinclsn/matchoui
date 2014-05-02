@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('matchoApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('GameCtrl', function ($scope, $http, config) {
     $scope.data = [];
     $scope.name = 'World';
   });

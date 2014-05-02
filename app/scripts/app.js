@@ -20,6 +20,10 @@ var app = angular.module('matchoApp', [
         templateUrl: 'views/players.html',
         controller: 'PlayersCtrl'
       })
+      .when('/game', {
+        templateUrl: 'views/game.html',
+        controller: 'GameCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
