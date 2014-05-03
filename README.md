@@ -7,7 +7,8 @@
 - Only once:
  - ```npm install```
  - ```bower install```
-- ```grunt serve```
+- Run in browser
+ - ```grunt serve```
 
 ## Run in emulator
 - ```grunt build```
