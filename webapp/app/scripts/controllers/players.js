@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('matchoApp')
+angular.module('matchostatApp')
   .controller('PlayersCtrl', function ($scope, $http, config) {
 
     var errorFunction = function (data, status, headers, config) {

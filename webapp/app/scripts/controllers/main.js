@@ -2,9 +2,6 @@
 
 angular.module('matchostatApp')
   .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    $scope.data = [];
+    $scope.name = 'World';
   });
