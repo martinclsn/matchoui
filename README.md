@@ -10,7 +10,7 @@
 - Run in browser
  - ```grunt serve```
 
-## Run in emulator
+### Run in emulator
 - ```cd matchoui/webapp```
 - ```grunt build```
 - ```cd ..```
