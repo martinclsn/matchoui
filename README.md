@@ -11,6 +11,7 @@
  - ```grunt serve```
 
 ## Run in emulator
+- ```cd matchoui/webapp```
 - ```grunt build```
 - ```cd ..```
 - ```cordova build <platform>```
