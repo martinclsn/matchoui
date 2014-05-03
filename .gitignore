@@ -1,7 +1,7 @@
-node_modules
-dist
-.tmp
-.sass-cache
-app/bower_components
+webapp/node_modules
+webapp/dist
+webapp/.tmp
+webapp/.sass-cache
+webapp/app/bower_components
 .idea
 *.iml
