@@ -1,7 +1,7 @@
 # matchostat app
 
 ## How to get started
-- Follow instructions [Hybrid](https://github.com/martinclsn/hybrid)
+- Follow instructions in [Hybrid](https://github.com/martinclsn/hybrid) to install npm, bower and grunt
 - git clone <matchoui>
 - cd matchoui/webapp
 - npm install
@@ -14,5 +14,5 @@
 - cordova build <platform>
 - cordova emulate <platform>
 
-Where <platform> is one of 'ios' and 'android'  
+Where '<platform>' is one of 'ios' and 'android'  
 
