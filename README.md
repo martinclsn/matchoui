@@ -14,5 +14,5 @@
 - cordova build <platform>
 - cordova emulate <platform>
 
-Where '<platform>' is one of 'ios' and 'android'  
+Where '\<platform\>' is one of 'ios' and 'android'  
 
