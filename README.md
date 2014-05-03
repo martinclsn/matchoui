@@ -5,8 +5,8 @@
 - ```git clone <matchoui>```
 - ```cd matchoui/webapp```
 - Only once:
- - ```npm install
-bower install```
+ - ```npm install```
+ - ```bower install```
 - ```grunt serve```
 
 ## Run in emulator
