@@ -19,6 +19,7 @@ angular.module('matchostatApp')
     }
 
     $scope.clear = function()  {
+      console.log('Clear!');
       $scope.playerName = '';
     }
 
@@ -31,6 +32,7 @@ angular.module('matchostatApp')
 
 
     $scope.addPlayer = function () {
+      console.log('add player: "' + $scope.playerName+'"')
       $http.post(getPlayersPath(), {name: $scope.playerName}).success(
         function () {
           init();

@@ -1,30 +1,48 @@
 <ion-view title="Players">
-    <ion-content class="has-header">
 
-        <form role="form">
-            <div class="row">
-                <div class="input-group">
-                    <input type="text" ng-model="playerName" placeholder="Name of player" class="form-control">
-                <span class="input-group-btn">
-                    <button class="btn btn-primary" ng-click="addPlayer()" ng-disabled="playerName.length === 0">Add</button>
-                    <button class="btn btn-primary" ng-click="clear()" ng-disabled="playerName.length === 0">Clear</button>
-                </span>
+    <div class="modal">
+
+        <!-- Modal header bar -->
+        <!--
+                <ion-header-bar class="bar-secondary">
+                    <h1 class="title">New Task</h1>
+                    <button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
+                </ion-header-bar>
+        -->
+
+        <!-- Modal content area -->
+        <ion-content ng-controller="PlayersCtrl">
+
+            <form>
+                <div class="list">
+                    <label class="item item-input">
+                        <input type="text" placeholder="Name of player" ng-model="playerName">
+                    </label>
                 </div>
-            </div>
-        </form>
-        <p></p>
 
-        <p><input type="text" ng-model="searchPlayers" placeholder="Quick search"></p>
+                <div class="padding">
+                    <button ng-click="addPlayer()" class="button button-block button-positive"
+                            ng-disabled="playerName.length === 0">Add new player
+                    </button>
+                </div>
 
-        <ul class="list-group">
-            <li class="list-group-item" ng-repeat="player in players | filter:searchPlayers">
-                <span class="badge alert-danger" ng-click="removePlayer(player.id)"><span class="glyphicon glyphicon-remove"/></span>
-                {{player.id}}: {{player.name}}
-            </li>
-        </ul>
 
-    </ion-content>
+            </form>
+            <!--
+                <p><input type="text" ng-model="searchPlayers" placeholder="Quick search"></p>
+        -->
+
+            <ul>
+                <li ng-repeat="player in players | filter:searchPlayers">
+                    <span ng-click="removePlayer(player.id)"></span>
+                    {{player.id}}: {{player.name}}
+                </li>
+            </ul>
+
+        </ion-content>
+
+    </div>
+
+
 </ion-view>
-
-<div ng-include="'views/menu.html'"/>
 
