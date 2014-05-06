@@ -27,7 +27,7 @@ var app = angular.module('matchostatApp', ["ui.router", "ionic"])
       .state('app.main', {
         url: "/main",
         views: {
-          'menuContent' :{
+          'menuContent': {
             templateUrl: 'views/main.html',
             controller: 'MainCtrl'
           }
@@ -36,7 +36,7 @@ var app = angular.module('matchostatApp', ["ui.router", "ionic"])
       .state('app.players', {
         url: "/players",
         views: {
-          'menuContent' :{
+          'menuContent': {
             templateUrl: 'views/players.html',
             controller: 'PlayersCtrl'
           }
@@ -46,7 +46,7 @@ var app = angular.module('matchostatApp', ["ui.router", "ionic"])
       .state('app.game', {
         url: "/game",
         views: {
-          'menuContent' :{
+          'menuContent': {
             templateUrl: 'views/game.html',
             controller: 'GameCtrl'
           }
