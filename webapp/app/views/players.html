@@ -1,51 +1,30 @@
 <ion-view title="Players">
+
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
 
-    <div class="modal">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon icon ion-ios7-minus-outline"
+                ng-click="showDelete = !showDelete"></button>
+        <a href="#/app/addPlayer" class="button button-icon icon ion-ios7-plus-outline"></a>
 
-        <!-- Modal header bar -->
-        <!--
-                <ion-header-bar class="bar-secondary">
-                    <h1 class="title">New Task</h1>
-                    <button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
-                </ion-header-bar>
-        -->
+    </ion-nav-buttons>
 
-        <!-- Modal content area -->
-        <ion-content ng-controller="PlayersCtrl">
-
-            <form>
-                <div class="list">
-                    <label class="item item-input">
-                        <input type="text" placeholder="Name of player" ng-model="playerName">
-                    </label>
-                </div>
-
-                <div class="padding">
-                    <button ng-click="addPlayer()" class="button button-block button-positive"
-                            ng-disabled="playerName.length === 0">Add new player
-                    </button>
-                </div>
-
-
-            </form>
-            <!--
-                <p><input type="text" ng-model="searchPlayers" placeholder="Quick search"></p>
-        -->
-
-            <ul>
-                <li ng-repeat="player in players | filter:searchPlayers">
-                    <span ng-click="removePlayer(player.id)"></span>
-                    {{player.id}}: {{player.name}}
-                </li>
-            </ul>
-
-        </ion-content>
-
-    </div>
-
-
+    <ion-content class="has-header">
+        <ion-list show-delete="showDelete">
+            <ion-item ng-repeat="player in players" href="#/app/players/{{player.id}}"
+                    class="item-icon-right">
+                {{player.name}}
+                <i class="icon ion-ios7-arrow-right"></i>
+                <ion-delete-button class="ion-minus-circled"
+                                   ng-click="removePlayer(player.id)">
+                </ion-delete-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
 </ion-view>
+
+
+
 

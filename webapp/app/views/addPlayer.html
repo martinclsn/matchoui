@@ -1,0 +1,35 @@
+<ion-view title="Add Player">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="has-header" ng-controller="PlayersCtrl">
+
+        <div class="list">
+            <label class="item item-input">
+                <input type="text" placeholder="Name of player" ng-model="playerName">
+            </label>
+        </div>
+
+        <div class="padding">
+            <button ng-click="addPlayer()" class="button button-block button-positive"
+                    ng-disabled="playerName.length === 0">Add new player
+            </button>
+        </div>
+
+
+        <!--
+            <p><input type="text" ng-model="searchPlayers" placeholder="Quick search"></p>
+    -->
+
+        <ul>
+            <li ng-repeat="player in players | filter:searchPlayers">
+                <span ng-click="removePlayer(player.id)"></span>
+                {{player.id}}: {{player.name}}
+            </li>
+        </ul>
+
+    </ion-content>
+
+
+</ion-view>

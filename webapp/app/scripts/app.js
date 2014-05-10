@@ -22,7 +22,6 @@ var app = angular.module('matchostatApp', ["ui.router", "ionic"])
         url: "/app",
         abstract: true,
         templateUrl: "views/menu.html"
-        //controller: function($scope) {}
       })
       .state('app.main', {
         url: "/main",
@@ -41,7 +40,24 @@ var app = angular.module('matchostatApp', ["ui.router", "ionic"])
             controller: 'PlayersCtrl'
           }
         }
-
+      })
+      .state('app.player', {
+        url: "/players/:playerId",
+        views: {
+          'menuContent': {
+            templateUrl: "views/player.html",
+            controller: 'PlayerCtrl'
+          }
+        }
+      })
+      .state('app.addPlayer', {
+        url: "/addPlayer",
+        views: {
+          'menuContent': {
+            templateUrl: 'views/addPlayer.html',
+            controller: 'PlayersCtrl'
+          }
+        }
       })
       .state('app.game', {
         url: "/game",
@@ -51,25 +67,14 @@ var app = angular.module('matchostatApp', ["ui.router", "ionic"])
             controller: 'GameCtrl'
           }
         }
-      })
+      });
 
 
     $urlRouterProvider.otherwise("/app/main");
 
-    /*    $routeProvider
-     .when('/', {
-     templateUrl: 'views/main.html',
-     controller: 'MainCtrl'
-     })
-     .when('/players', {
-     templateUrl: 'views/players.html',
-     controller: 'PlayersCtrl'
-     })
-     .when('/game', {
-     templateUrl: 'views/game.html',
-     controller: 'GameCtrl'
-     })
-     .otherwise({
-     redirectTo: '/'
-     });*/
-  });
+  }
+);
+
+app.factory('exceptionService', function () {
+  return new ExceptionService();
+});

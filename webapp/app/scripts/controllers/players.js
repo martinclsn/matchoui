@@ -1,20 +1,16 @@
 'use strict';
 
 angular.module('matchostatApp')
-  .controller('PlayersCtrl', function ($scope, $http, config) {
+  .controller('PlayersCtrl', function ($scope, $http, config, exceptionService) {
 
-    var errorFunction = function (data, status, headers, config) {
-      var message = 'Error ' + data;
-      if(status === 0) {
-        message = 'Unable to access server';
-      }
-      alert(message);
-    };
+    var errorFunction = exceptionService.getHttpErrorFunction(exceptionService);
 
     function init() {
       $http.get(getPlayersPath()).success(function (data, status, headers, config) {
         $scope.players = data;
         $scope.playerName = '';
+        $scope.showDelete = false;
+
       }).error(errorFunction);
     }
 
