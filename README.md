@@ -7,7 +7,7 @@
 - Only once:
  - ```npm install```
  - ```bower install```
-- Run in browser
+- Run application in your default browser:
  - ```grunt serve```
 
 ### Run in emulator
