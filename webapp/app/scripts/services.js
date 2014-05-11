@@ -17,3 +17,17 @@ function ExceptionService() {
   }
 
 }
+
+function ResourceService(config) {
+
+  this.config = config;
+
+  this.getPlayersPath = function () {
+    return config.API_PATH + '/players';
+  }
+
+  this.getGamesPath = function () {
+    return config.API_PATH + '/games';
+  }
+
+}

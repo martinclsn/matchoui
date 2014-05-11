@@ -78,3 +78,7 @@ var app = angular.module('matchostatApp', ["ui.router", "ionic"])
 app.factory('exceptionService', function () {
   return new ExceptionService();
 });
+
+app.factory('resourceService', ['config',function (config) {
+  return new ResourceService(config);
+}]);
