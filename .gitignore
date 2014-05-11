@@ -8,3 +8,5 @@ webapp/app/bower_components
 TODO.txt
 platforms
 plugins
+
+npm-debug.log
