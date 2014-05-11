@@ -14,6 +14,7 @@
 - ```cd matchoui/webapp```
 - ```grunt build```
 - ```cd ..```
+- ```cordova platform add <platform>```
 - ```cordova build <platform>```
 - ```cordova emulate <platform>```
 
