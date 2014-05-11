@@ -20,3 +20,7 @@
 
 Where ```<platform>``` is one of 'ios' and 'android'  
 
+### Run on android
+- Optional: ```adb device```
+- ```cordova run android [--device=<device-code>]```
+
