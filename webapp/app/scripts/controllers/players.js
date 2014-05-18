@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('matchostatApp')
-  .controller('PlayersCtrl', function ($scope, $http, config, exceptionService, resourceService) {
+  .controller('PlayersCtrl', function ($scope, $log, $http, config, exceptionService, resourceService) {
 
     var errorFunction = exceptionService.getHttpErrorFunction(exceptionService);
 
     function init() {
-      $http.get(resourceService.getPlayersPath()).success(function (data, status, headers, config) {
+      $http.get(resourceService.getPlayersPath()).success(function (data) {
         $scope.players = data;
         $scope.playerName = '';
         $scope.showDelete = false;
@@ -15,9 +15,9 @@ angular.module('matchostatApp')
     }
 
     $scope.clear = function()  {
-      console.log('Clear!');
+      $log.info('Clear!');
       $scope.playerName = '';
-    }
+    };
 
     $scope.players = [];
     init();
@@ -29,7 +29,7 @@ angular.module('matchostatApp')
 
 
     $scope.addPlayer = function () {
-      console.log('add player: "' + $scope.playerName+'"')
+      $log.info('add player: "' + $scope.playerName+'"');
       $http.post(getPlayersPath(), {name: $scope.playerName}).success(
         function () {
           init();
@@ -37,7 +37,7 @@ angular.module('matchostatApp')
     };
 
     $scope.removePlayer = function (id) {
-      console.log('remove player '+ id);
+      $log.info('remove player '+ id);
       $http.delete(getPlayersPath() + '/' + id).success(
         function () {
           init();

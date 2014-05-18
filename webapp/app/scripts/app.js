@@ -1,17 +1,17 @@
-/* exported app */
 'use strict';
 
-var app = angular.module('matchostatApp', ["ui.router", "ionic"])
+var app = angular.module('matchostatApp', ['ui.router', 'ionic']);
 
+app
   .constant('config', {
-    API_PATH: 'http://localhost:8080/matchostat/rest'
+    API_PATH: 'http://192.168.1.67:8080/matchostat/rest'
   })
 
-  .run(function ($ionicPlatform) {
+  .run(function ($ionicPlatform, $window) {
     $ionicPlatform.ready(function () {
-      if (window.StatusBar) {
+      if ($window.StatusBar) {
         // org.apache.cordova.statusbar required
-        StatusBar.styleDefault();
+        $window.StatusBar.styleDefault();
       }
     });
   })
@@ -19,12 +19,12 @@ var app = angular.module('matchostatApp', ["ui.router", "ionic"])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('app', {
-        url: "/app",
+        url: '/app',
         abstract: true,
-        templateUrl: "views/menu.html"
+        templateUrl: 'views/menu.html'
       })
       .state('app.main', {
-        url: "/main",
+        url: '/main',
         views: {
           'menuContent': {
             templateUrl: 'views/main.html',
@@ -33,7 +33,7 @@ var app = angular.module('matchostatApp', ["ui.router", "ionic"])
         }
       })
       .state('app.players', {
-        url: "/players",
+        url: '/players',
         views: {
           'menuContent': {
             templateUrl: 'views/players.html',
@@ -42,16 +42,16 @@ var app = angular.module('matchostatApp', ["ui.router", "ionic"])
         }
       })
       .state('app.player', {
-        url: "/players/:playerId",
+        url: '/players/:playerId',
         views: {
           'menuContent': {
-            templateUrl: "views/player.html",
+            templateUrl: 'views/player.html',
             controller: 'PlayerCtrl'
           }
         }
       })
       .state('app.addPlayer', {
-        url: "/addPlayer",
+        url: '/addPlayer',
         views: {
           'menuContent': {
             templateUrl: 'views/addPlayer.html',
@@ -60,7 +60,7 @@ var app = angular.module('matchostatApp', ["ui.router", "ionic"])
         }
       })
       .state('app.game', {
-        url: "/game",
+        url: '/game',
         views: {
           'menuContent': {
             templateUrl: 'views/game.html',
@@ -70,15 +70,7 @@ var app = angular.module('matchostatApp', ["ui.router", "ionic"])
       });
 
 
-    $urlRouterProvider.otherwise("/app/main");
+    $urlRouterProvider.otherwise('/app/main');
 
   }
 );
-
-app.factory('exceptionService', function () {
-  return new ExceptionService();
-});
-
-app.factory('resourceService', ['config',function (config) {
-  return new ResourceService(config);
-}]);

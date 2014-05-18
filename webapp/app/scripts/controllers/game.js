@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('matchostatApp')
-  .controller('GameCtrl', function ($scope, $ionicModal, $http, config, resourceService, exceptionService) {
+  .controller('GameCtrl', function ($scope, $ionicModal, $http, $log, config, resourceService, exceptionService) {
 
     function init() {
-      console.log('Init GameCtrl')
+      $log.info('Init GameCtrl');
+
       $scope.selectedTeam = 1;
       $scope.teams = {};
       $scope.teams[1] = [];
@@ -21,7 +22,7 @@ angular.module('matchostatApp')
     });
 
     $scope.openNewGameModal = function () {
-      console.log('Show new game modal')
+      $log.info('Show new game modal');
       $scope.newGameModal.show();
     };
 
@@ -31,12 +32,12 @@ angular.module('matchostatApp')
     };
 
     $scope.startGame = function () {
-      console.log('Start game');
+      $log.info('Start game');
 
       var game = {team1: {players: $scope.teams[1]},
-                  team2: {players: $scope.teams[2]}}
+                  team2: {players: $scope.teams[2]}};
 
-      $http.post(resourceService.getGamesPath(), game).success(function (data, status, headers, config) {
+      $http.post(resourceService.getGamesPath(), game).success(function () {
         $scope.closeNewGameModal();
       }).error(exceptionService.getHttpErrorFunction(exceptionService));
 
@@ -52,20 +53,21 @@ angular.module('matchostatApp')
     });
 
     var getAllPlayers = function () {
-      $http.get(resourceService.getPlayersPath()).success(function (data, status, headers, config) {
+      $http.get(resourceService.getPlayersPath()).success(function (data) {
         $scope.players = data;
       }).error(exceptionService.getHttpErrorFunction(exceptionService));
-    }
+    };
 
     $scope.addTeamPlayer = function (player) {
-      console.log('Add player ' + JSON.stringify(player) + ' to team ' + $scope.selectedTeam)
+      $log.info('Add player ' + JSON.stringify(player) + ' to team ' + $scope.selectedTeam);
+
       $scope.teams[$scope.selectedTeam].push(player);
       $scope.closeAddTeamPlayerModal();
-    }
+    };
 
 
     $scope.openAddTeamPlayerModal = function (team) {
-      console.log('addPlayer for Team ' + team);
+      $log.info('addPlayer for Team ' + team);
 
       getAllPlayers();
 
