@@ -4,7 +4,7 @@ var app = angular.module('matchostatApp', ['ui.router', 'ionic']);
 
 app
   .constant('config', {
-    API_PATH: 'http://192.168.1.67:8080/matchostat/rest'
+    API_PATH: 'http://localhost:8080/matchostat/rest'
   })
 
   .run(function ($ionicPlatform, $window) {
@@ -67,10 +67,19 @@ app
             controller: 'GameCtrl'
           }
         }
+      })
+      .state('app.games', {
+        url: '/games',
+        views: {
+          'menuContent': {
+            templateUrl: 'views/games.html',
+            controller: 'GamesCtrl'
+          }
+        }
       });
 
 
-    $urlRouterProvider.otherwise('/app/main');
+    $urlRouterProvider.otherwise('/app/game');
 
   }
 );

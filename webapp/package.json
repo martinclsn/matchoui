@@ -3,10 +3,6 @@
   "version": "0.0.1",
   "dependencies": {},
   "devDependencies": {
-    "karma": "^0.12.14",
-    "karma-ng-html2js-preprocessor": "^0.1.0",
-    "karma-ng-scenario": "^0.1.0",
-    "gulp-karma": "0.0.4",
     "connect": "^2.14.4",
     "connect-livereload": "^0.4.0",
     "gulp": "^3.6.0",
@@ -19,13 +15,19 @@
     "gulp-flatten": "^0.0.2",
     "gulp-imagemin": "^0.5.0",
     "gulp-jshint": "^1.5.3",
+    "gulp-karma": "0.0.4",
     "gulp-livereload": "^1.2.0",
     "gulp-load-plugins": "^0.5.0",
-    "gulp-size": "^0.3.0",
     "gulp-sass": "^0.7.1",
+    "gulp-size": "^0.3.0",
     "gulp-uglify": "^0.2.1",
     "gulp-useref": "^0.4.2",
     "jshint-stylish": "^0.2.0",
+    "karma": "^0.12.14",
+    "karma-chrome-launcher": "^0.1.3",
+    "karma-jasmine": "^0.1.5",
+    "karma-ng-html2js-preprocessor": "^0.1.0",
+    "karma-ng-scenario": "^0.1.0",
     "opn": "^0.1.1",
     "wiredep": "^1.4.3"
   },
@@ -35,7 +37,5 @@
   "scripts": {
     "test": "grunt test"
   },
-  "oldDependencies": {
-
-  }
+  "oldDependencies": {}
 }

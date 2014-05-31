@@ -7,13 +7,14 @@ function ExceptionService($log, $window) {
     $window.alert(message);
   };
 
-  this.getHttpErrorFunction = function (thisService) {
+  this.getHttpErrorFunction = function () {
+    var that = this;
     var errorFunction = function (data, status) {
       var message = 'Error ' + data;
       if (status === 0) {
         message = 'Unable to access server';
       }
-      thisService.error(message);
+      that.error(message);
     };
     return errorFunction;
   };

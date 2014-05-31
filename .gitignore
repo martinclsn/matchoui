@@ -6,6 +6,7 @@ webapp/app/bower_components
 .idea
 *.iml
 TODO.txt
+notes.txt
 platforms
 plugins
 

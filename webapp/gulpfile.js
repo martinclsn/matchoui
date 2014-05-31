@@ -2,6 +2,7 @@
 // generated on 2014-05-11 using generator-gulp-webapp 0.1.0
 
 var gulp = require('gulp');
+var karma = require('karma');
 
 // load plugins
 var $ = require('gulp-load-plugins')();
@@ -26,26 +27,26 @@ gulp.task('html', ['styles', 'scripts'], function () {
   var cssFilter = $.filter('**/*.css');
 
   return gulp.src('app/*.html')
-    .pipe($.useref.assets({searchPath: '{.tmp,app}'}))
-    .pipe(jsFilter)
-    //.pipe($.uglify())
-    .pipe(jsFilter.restore())
-    .pipe(cssFilter)
-    .pipe($.csso())
-    .pipe(cssFilter.restore())
-    .pipe($.useref.restore())
-    .pipe($.useref())
+//    .pipe($.useref.assets({searchPath: '{.tmp,app}'}))
+//    .pipe(jsFilter)
+//    .pipe($.uglify())
+//    .pipe(jsFilter.restore())
+//    .pipe(cssFilter)
+//    .pipe($.csso())
+//    .pipe(cssFilter.restore())
+//    .pipe($.useref.restore())
+//    .pipe($.useref())
     .pipe(gulp.dest('dist'))
     .pipe($.size());
 });
 
 gulp.task('images', function () {
   return gulp.src('app/images/**/*')
-    .pipe($.cache($.imagemin({
+ /*   .pipe($.cache($.imagemin({
       optimizationLevel: 3,
       progressive: true,
       interlaced: true
-    })))
+    })))*/
     .pipe(gulp.dest('dist/images'))
     .pipe($.size());
 });
@@ -67,7 +68,7 @@ gulp.task('clean', function () {
   return gulp.src(['.tmp', 'dist'], { read: false }).pipe($.clean());
 });
 
-gulp.task('build', ['html', 'images', 'fonts', 'extras']);
+gulp.task('build', ['test', 'html', 'images', 'fonts' /*, 'extras'*/]);
 
 gulp.task('default', ['clean'], function () {
   gulp.start('build');
@@ -109,7 +110,7 @@ gulp.task('watch', ['connect', 'serve'], function () {
   // watch for changes
 
   gulp.watch([
-    'app/*.html',
+    'app/**/*.html',
     '.tmp/styles/**/*.css',
     'app/scripts/**/*.js',
     'app/images/**/*'
@@ -117,8 +118,16 @@ gulp.task('watch', ['connect', 'serve'], function () {
     server.changed(file.path);
   });
 
-  gulp.watch('app/styles/**/*.css', ['styles']);
+  gulp.watch('app/styles/**/*.*css', ['styles']);
   gulp.watch('app/scripts/**/*.js', ['scripts']);
   gulp.watch('app/images/**/*', ['images']);
   gulp.watch('bower.json', ['wiredep']);
+});
+
+gulp.task('test', ['karma']);
+
+gulp.task('karma', function(cb) {
+  var config = require('./karma.conf.js');
+  config.singleRun = true;
+  return karma.server.start(config, cb);
 });

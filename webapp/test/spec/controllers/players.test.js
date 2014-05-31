@@ -3,29 +3,59 @@
 describe('Controller: PlayersCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('matchoApp'));
+/*
+  beforeEach(function() {
+    module('matchostatApp');
+    inject(function ($controller, $rootScope) {
+      scope = $rootScope.$new();
+      http = {
+        get : function () {
+          return {success: function (dataFunction) {
+            dataFunction(['Player1', 'Player2']);
+          }};
+        }
+      };
+
+      PlayersCtrl = $controller('PlayersCtrl', {
+        $scope: scope,
+        $log: http,
+        $http: http,
+        exceptionService: http,
+        resourceService: http
+      });
+    });
+  });
+*/
 
   var PlayersCtrl,
-    scope, http, conf;
+    scope, http;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    http = {
-      get : function () {
-        return {success: function (dataFunction) {
-          dataFunction(['Player1', 'Player2']);
-        }};
-      }
-    };
-    conf = {API_PATH: 'rest'};
 
-    PlayersCtrl = $controller('PlayersCtrl', {
-      $scope: scope,
-      $http: http,
-      config: conf
+/*
+
+
+  describe('MyCtrl', function () {
+    beforeEach(inject(function ($rootScope, $controller) {
+      scope = $rootScope.$new();
+      PlayersCtrl = $controller('PlayersCtrl', {
+        $scope: scope,
+        $http: "X",
+        config: "X"
+      });
+    }));
+    it('sets the name', function () {
+      expect(scope.name).toBe('Superhero');
     });
-  }));
+
+    it('watches the name and updates the counter', function () {
+      expect(scope.counter).toBe(0);
+      scope.name = 'Batman';
+      scope.$digest();
+      expect(scope.counter).toBe(1);
+    });
+  });
+*/
+
 
   it('should read players from the server', function () {
     expect(scope.players.length === 2).toBe(true);

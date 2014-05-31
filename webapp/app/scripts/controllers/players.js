@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('matchostatApp')
-  .controller('PlayersCtrl', function ($scope, $log, $http, config, exceptionService, resourceService) {
+  .controller('PlayersCtrl', function ($scope, $log, $http, exceptionService, resourceService) {
 
     var errorFunction = exceptionService.getHttpErrorFunction(exceptionService);
 
@@ -24,7 +24,6 @@ angular.module('matchostatApp')
 
     function getPlayersPath() {
       return resourceService.getPlayersPath();
-      //return config.API_PATH + '/players';
     }
 
 
@@ -36,13 +35,4 @@ angular.module('matchostatApp')
         }).error(errorFunction);
     };
 
-    $scope.removePlayer = function (id) {
-      $log.info('remove player '+ id);
-      $http.delete(getPlayersPath() + '/' + id).success(
-        function () {
-          init();
-        }
-      ).error(errorFunction);
-
-    };
   });
