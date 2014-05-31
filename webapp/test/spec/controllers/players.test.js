@@ -2,36 +2,37 @@
 
 describe('Controller: PlayersCtrl', function () {
 
-  // load the controller's module
-/*
+  var ctrl, http, httpBackend, scope, exceptionService, resourceService;
+
   beforeEach(function() {
     module('matchostatApp');
-    inject(function ($controller, $rootScope) {
+
+    var injectFunction = function ($controller, $rootScope, $http, $httpBackend, $log, $window) {
       scope = $rootScope.$new();
-      http = {
-        get : function () {
-          return {success: function (dataFunction) {
-            dataFunction(['Player1', 'Player2']);
-          }};
-        }
-      };
+      http = $http;
+      httpBackend = $httpBackend;
 
-      PlayersCtrl = $controller('PlayersCtrl', {
+      exceptionService = new ExceptionService($log, $window);
+      resourceService = new ResourceService({API_PATH:'http://localhost'});
+
+      ctrl = $controller('PlayersCtrl', {
         $scope: scope,
-        $log: http,
+        $log: $log,
         $http: http,
-        exceptionService: http,
-        resourceService: http
+        exceptionService: exceptionService,
+        resourceService: resourceService
       });
-    });
+    };
+    //injectFunction = function() {};
+    inject(injectFunction);
   });
-*/
 
-  var PlayersCtrl,
-    scope, http;
 
 
 /*
+ return {success: function (dataFunction) {
+ dataFunction(['Player1', 'Player2']);
+ }};
 
 
   describe('MyCtrl', function () {
@@ -58,6 +59,22 @@ describe('Controller: PlayersCtrl', function () {
 
 
   it('should read players from the server', function () {
-    expect(scope.players.length === 2).toBe(true);
+    var url = resourceService.getPlayersPath();
+    httpBackend.whenGET(url).respond(['Player1', 'Player2']);
+    httpBackend.whenGET('views/menu.html').respond('');
+    httpBackend.whenGET('views/game.html').respond('');
+
+    scope.getPlayers();
+
+    //simulate response
+    httpBackend.flush();
+
+    expect(scope.players.length).toBe(2);
   });
+
+  afterEach(function() {
+    //httpBackend.verifyNoOutstandingExpectation();
+    //httpBackend.verifyNoOutstandingRequest();
+  });
+
 });

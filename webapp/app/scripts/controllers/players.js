@@ -5,13 +5,18 @@ angular.module('matchostatApp')
 
     var errorFunction = exceptionService.getHttpErrorFunction(exceptionService);
 
-    function init() {
+    $scope.getPlayers = function () {
       $http.get(resourceService.getPlayersPath()).success(function (data) {
         $scope.players = data;
         $scope.playerName = '';
         $scope.showDelete = false;
 
       }).error(errorFunction);
+    };
+
+    function init() {
+      $scope.players = [];
+      $scope.getPlayers();
     }
 
     $scope.clear = function()  {
@@ -19,7 +24,6 @@ angular.module('matchostatApp')
       $scope.playerName = '';
     };
 
-    $scope.players = [];
     init();
 
     function getPlayersPath() {

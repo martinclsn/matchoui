@@ -1,8 +1,7 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: testAppCtrl', function () {
 
-  // load the controller's module
   beforeEach(function () {
     module('testApp');
     inject(function ($controller, $rootScope) {
@@ -18,4 +17,5 @@ describe('Controller: MainCtrl', function () {
   it('should attach a list of awesomeThings to the scope', function () {
     expect(scope.threeLetters.length).toBe(3);
   });
+
 });

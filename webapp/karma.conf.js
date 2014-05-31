@@ -7,14 +7,16 @@ module.exports = {
 
   // list of files / patterns to load in the browser
   files: [
-    'app/bower_components/angular/angular.js',
+    'test/lib/angular.js',
+    'test/lib/*.js',
     'app/bower_components/angular-ui-router/release/angular-ui-router.js',
-    'app/bower_components/angular-sanitize/angular-sanitize.js',
-    'app/bower_components/angular-animate/angular-animate.js',
     'app/bower_components/ionic/release/js/ionic.js',
-    'app/bower_components/angular-mocks/angular-mocks.js',
-    'app/scripts/testApp/**/*.js',
-    'test/testApp/**/*.js'
+    'app/bower_components/ionic/release/js/ionic-angular.js',
+    'app/scripts/*.js',
+    'app/scripts/**/*.js',
+    'test/**/*.js'
+//    'app/scripts/testApp/**/*.js',
+//    'test/testApp/**/*.js'
   ],
 
   // list of files / patterns to exclude
