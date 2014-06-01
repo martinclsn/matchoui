@@ -45,11 +45,11 @@ angular.module('matchostatApp')
     };
 
 
-    $ionicModal.fromTemplateUrl('addTeamPlayerModal.html', {
+    $ionicModal.fromTemplateUrl('addTeamPlayersModal.html', {
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function (modal) {
-      $scope.addTeamPlayerModal = modal;
+      $scope.addTeamPlayersModal = modal;
     });
 
     var getAllPlayers = function () {
@@ -72,11 +72,11 @@ angular.module('matchostatApp')
       getAllPlayers();
 
       $scope.selectedTeam = team;
-      $scope.addTeamPlayerModal.show();
+      $scope.addTeamPlayersModal.show();
     };
 
     $scope.closeAddTeamPlayerModal = function () {
-      $scope.addTeamPlayerModal.hide();
+      $scope.addTeamPlayersModal.hide();
     };
 
 

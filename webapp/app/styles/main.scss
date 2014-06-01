@@ -1,3 +1,21 @@
+.team-blue {
+  border-color: #145fd7;
+  background-color: #4a87ee;
+  background-image: linear-gradient(0deg, #145fd7, #145fd7 50%, transparent 50%);
+  color: #fff;
+}
+
+.team-red {
+  border-color: #cc2311;
+  background-color: #ef4e3a;
+  background-image: linear-gradient(0deg, #cc2311, #cc2311 50%, transparent 50%);
+  color: #fff;
+}
+
+.background-grey {
+  background-color: #ddd;
+}
+
 .absolute-center {
   margin: auto;
 }

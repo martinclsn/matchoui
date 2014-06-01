@@ -28,41 +28,11 @@ describe('Controller: PlayersCtrl', function () {
   });
 
 
-
-/*
- return {success: function (dataFunction) {
- dataFunction(['Player1', 'Player2']);
- }};
-
-
-  describe('MyCtrl', function () {
-    beforeEach(inject(function ($rootScope, $controller) {
-      scope = $rootScope.$new();
-      PlayersCtrl = $controller('PlayersCtrl', {
-        $scope: scope,
-        $http: "X",
-        config: "X"
-      });
-    }));
-    it('sets the name', function () {
-      expect(scope.name).toBe('Superhero');
-    });
-
-    it('watches the name and updates the counter', function () {
-      expect(scope.counter).toBe(0);
-      scope.name = 'Batman';
-      scope.$digest();
-      expect(scope.counter).toBe(1);
-    });
-  });
-*/
-
-
   it('should read players from the server', function () {
     var url = resourceService.getPlayersPath();
     httpBackend.whenGET(url).respond(['Player1', 'Player2']);
     httpBackend.whenGET('views/menu.html').respond('');
-    httpBackend.whenGET('views/game.html').respond('');
+    httpBackend.whenGET('views/newGame.html').respond('');
 
     scope.getPlayers();
 
@@ -73,8 +43,8 @@ describe('Controller: PlayersCtrl', function () {
   });
 
   afterEach(function() {
-    //httpBackend.verifyNoOutstandingExpectation();
-    //httpBackend.verifyNoOutstandingRequest();
+    httpBackend.verifyNoOutstandingExpectation();
+    httpBackend.verifyNoOutstandingRequest();
   });
 
 });

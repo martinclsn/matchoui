@@ -59,8 +59,17 @@ app
           }
         }
       })
+      .state('app.newGame', {
+        url: '/newGame',
+        views: {
+          'menuContent': {
+            templateUrl: 'views/newGame.html',
+            controller: 'NewGameCtrl'
+          }
+        }
+      })
       .state('app.game', {
-        url: '/game',
+        url: '/game/:id',
         views: {
           'menuContent': {
             templateUrl: 'views/game.html',
@@ -79,7 +88,7 @@ app
       });
 
 
-    $urlRouterProvider.otherwise('/app/game');
+    $urlRouterProvider.otherwise('/app/newGame');
 
   }
 );

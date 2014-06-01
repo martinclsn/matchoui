@@ -1,0 +1,64 @@
+<ion-view title="New Game">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="has-header background-grey">
+
+
+        <div class="list list-inset background-grey">
+
+            <div class="list">
+                <div class="item item-divider item-icon-right team-blue" ng-click="openAddTeamPlayersModal(1)">
+                    Team Blue
+                    <i class="icon ion-ios7-arrow-right"></i>
+                </div>
+
+                <a ng-repeat="player in getPlayersInTeam(1)" class="item">
+                    {{player.name}}
+                </a>
+
+                <div class="item item-divider item-icon-right team-red" ng-click="openAddTeamPlayersModal(2)">
+                    Team Red
+                    <i class="icon ion-ios7-arrow-right"></i>
+                </div>
+
+                <a ng-repeat="player in getPlayersInTeam(2)" class="item">
+                    {{player.name}}
+                </a>
+            </div>
+
+            <button class="button button-block button-balanced"
+                    ng-disabled="getPlayersInTeam(1).length===0 || getPlayersInTeam(2).length===0" ng-click="startGame()">
+                Start game
+            </button>
+
+        </div>
+
+        <script id="addTeamPlayersModal.html" type="text/ng-template">
+            <div class="modal">
+                <ion-header-bar ng-class="(selectedTeam == 1) ? 'bar-positive': 'bar-assertive'">
+                    <a class="button button-clear"
+                       ng-click="closeAddTeamPlayersModal()">Done</a>
+
+                    <h1 class="title">Team {{getSelectedTeamLabel()}}</h1>
+                    <a ng-click="closeAddTeamPlayersModal()" ui-sref="app.addPlayer"
+                       class="button button-icon icon ion-person-add"></a>
+
+                </ion-header-bar>
+                <ion-content class="has-header">
+                    <ul class="list">
+                        <li class="item item-checkbox"  ng-repeat="player in players">
+                            <label class="checkbox checkbox-dark">
+                                <input type="checkbox" ng-checked="player.checked" ng-model="player.checked">
+                            </label>
+                            {{player.name}}
+                        </li>
+                    </ul>
+
+                </ion-content>
+            </div>
+        </script>
+
+    </ion-content>
+</ion-view>
